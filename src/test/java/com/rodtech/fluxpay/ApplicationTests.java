@@ -1,10 +1,10 @@
-package com.rodtech.fluxchat;
+package com.rodtech.fluxpay;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class FluxchatApplicationTests {
+class ApplicationTests {
 
 	@Test
 	void contextLoads() {
