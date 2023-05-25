@@ -1,4 +1,4 @@
-# Addressbook Api [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/rodrigolimasd/fluxpay/blob/master/LICENSE)
+# Fluxpay [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/rodrigolimasd/fluxpay/blob/master/LICENSE)
 This API for making credit card payments through a gateway.
 Stripe is used as payment gateway
 
