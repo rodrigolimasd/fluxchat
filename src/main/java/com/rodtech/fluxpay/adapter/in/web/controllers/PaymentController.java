@@ -1,9 +1,9 @@
 package com.rodtech.fluxpay.adapter.in.web.controllers;
 
 import com.rodtech.fluxpay.application.dtos.PaymentDTO;
-import com.rodtech.fluxpay.domain.model.payment.Card;
-import com.rodtech.fluxpay.domain.model.payment.Payment;
-import com.rodtech.fluxpay.domain.service.PaymentService;
+import com.rodtech.fluxpay.domain.models.payment.Card;
+import com.rodtech.fluxpay.domain.models.payment.Payment;
+import com.rodtech.fluxpay.domain.services.PaymentService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
