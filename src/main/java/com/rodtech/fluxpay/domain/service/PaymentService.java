@@ -1,6 +1,6 @@
 package com.rodtech.fluxpay.domain.service;
 
-import com.rodtech.fluxpay.domain.model.Payment;
+import com.rodtech.fluxpay.domain.model.payment.Payment;
 
 import java.util.UUID;
 
