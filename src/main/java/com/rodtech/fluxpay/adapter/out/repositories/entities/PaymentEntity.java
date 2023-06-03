@@ -1,6 +1,6 @@
-package com.rodtech.fluxpay.adapter.out.persistence.entities;
+package com.rodtech.fluxpay.adapter.out.repositories.entities;
 
-import com.rodtech.fluxpay.domain.model.payment.enums.PaymentStatus;
+import com.rodtech.fluxpay.domain.models.payment.enums.PaymentStatus;
 import lombok.*;
 import org.hibernate.annotations.Type;
 

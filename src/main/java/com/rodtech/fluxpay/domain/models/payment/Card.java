@@ -1,4 +1,4 @@
-package com.rodtech.fluxpay.domain.model.payment;
+package com.rodtech.fluxpay.domain.models.payment;
 
 import lombok.*;
 

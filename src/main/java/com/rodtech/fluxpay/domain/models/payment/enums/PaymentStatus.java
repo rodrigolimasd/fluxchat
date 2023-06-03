@@ -1,4 +1,4 @@
-package com.rodtech.fluxpay.domain.model.payment.enums;
+package com.rodtech.fluxpay.domain.models.payment.enums;
 
 public enum PaymentStatus {
     PENDING("Pending"),

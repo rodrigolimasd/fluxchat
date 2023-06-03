@@ -1,10 +1,10 @@
-package com.rodtech.fluxpay.domain.service.impl;
+package com.rodtech.fluxpay.domain.services.impl;
 
-import com.rodtech.fluxpay.domain.gateway.payment.PaymentDataGateway;
-import com.rodtech.fluxpay.domain.gateway.payment.PaymentGateway;
-import com.rodtech.fluxpay.domain.model.payment.Payment;
-import com.rodtech.fluxpay.domain.model.payment.enums.PaymentStatus;
-import com.rodtech.fluxpay.domain.service.PaymentService;
+import com.rodtech.fluxpay.domain.gateways.payment.PaymentDataGateway;
+import com.rodtech.fluxpay.domain.gateways.payment.PaymentGateway;
+import com.rodtech.fluxpay.domain.models.payment.Payment;
+import com.rodtech.fluxpay.domain.models.payment.enums.PaymentStatus;
+import com.rodtech.fluxpay.domain.services.PaymentService;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;

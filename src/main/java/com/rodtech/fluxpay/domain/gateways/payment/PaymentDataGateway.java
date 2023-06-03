@@ -1,6 +1,6 @@
-package com.rodtech.fluxpay.domain.gateway.payment;
+package com.rodtech.fluxpay.domain.gateways.payment;
 
-import com.rodtech.fluxpay.domain.model.payment.Payment;
+import com.rodtech.fluxpay.domain.models.payment.Payment;
 
 import java.util.UUID;
 

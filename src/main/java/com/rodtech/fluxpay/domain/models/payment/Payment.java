@@ -1,6 +1,6 @@
-package com.rodtech.fluxpay.domain.model.payment;
+package com.rodtech.fluxpay.domain.models.payment;
 
-import com.rodtech.fluxpay.domain.model.payment.enums.PaymentStatus;
+import com.rodtech.fluxpay.domain.models.payment.enums.PaymentStatus;
 import lombok.*;
 
 import java.math.BigDecimal;
