@@ -13,6 +13,8 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Table
 public class PaymentEntity {
     @Id
     @Type(type = "org.hibernate.type.UUIDCharType")
