@@ -31,14 +31,17 @@ $ cd fluxpay
 ````
 ### Running the Development environment
 
-**Running with Maven**
+**Running with Gradle**
 
-With Database running and the environment properly configured, you can now run the server:
+**Start database**
+```
+docker-compose up -d
+```
 
 **Running API**
 
 ```
-$ mvn spring-boot:run -Dspring-boot.run.profiles=dev
+$ ./gradlew bootRun
 ```
 
 To run the tests use the following command
@@ -46,10 +49,26 @@ To run the tests use the following command
 **Running the tests**
 
 ```
-$ mvn clean test
+$ ./gradlew clean test
 ```
 
-**Swagger** Endpoint: http://localhost:8090/swagger-ui.html
+### Consuming the API
+```
+$ curl --location --request POST 'http://localhost:8080/api/v1/payments' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "amount": 100.10,
+    "currency": "BRL",
+    "description": "credit card payment test",
+    "card": {
+        "cardHolderName":"holder name",
+        "cardNumber":"123**123",
+        "expirationMonth": 1,
+        "expirationYear": 2030,
+        "cvc": 123
+    }
+}'
+```
 
 ## Contributing
 
