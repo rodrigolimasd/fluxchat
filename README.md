@@ -52,7 +52,23 @@ To run the tests use the following command
 $ ./gradlew clean test
 ```
 
-**Swagger** Endpoint: http://localhost:8090/swagger-ui.html
+### Consuming the API
+```
+$ curl --location --request POST 'http://localhost:8080/api/v1/payments' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "amount": 100.10,
+    "currency": "BRL",
+    "description": "credit card payment test",
+    "card": {
+        "cardHolderName":"holder name",
+        "cardNumber":"123**123",
+        "expirationMonth": 1,
+        "expirationYear": 2030,
+        "cvc": 123
+    }
+}'
+```
 
 ## Contributing
 
