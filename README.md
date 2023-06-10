@@ -31,14 +31,17 @@ $ cd fluxpay
 ````
 ### Running the Development environment
 
-**Running with Maven**
+**Running with Gradle**
 
-With Database running and the environment properly configured, you can now run the server:
+**Start database**
+```
+docker-compose up -d
+```
 
 **Running API**
 
 ```
-$ mvn spring-boot:run -Dspring-boot.run.profiles=dev
+$ ./gradlew bootRun
 ```
 
 To run the tests use the following command
@@ -46,7 +49,7 @@ To run the tests use the following command
 **Running the tests**
 
 ```
-$ mvn clean test
+$ ./gradlew clean test
 ```
 
 **Swagger** Endpoint: http://localhost:8090/swagger-ui.html
