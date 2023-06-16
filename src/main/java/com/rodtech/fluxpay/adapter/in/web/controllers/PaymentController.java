@@ -8,9 +8,9 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @Log4j2
 @RestController
@@ -25,10 +25,19 @@ public class PaymentController {
         this.paymentMapper = paymentMapper;
     }
 
+    @PostMapping
     public ResponseEntity<PaymentCreatedDTO> pay(@RequestBody @Validated PaymentDTO paymentDTO) {
-        log.info("creating new payment");
+        log.info("receiving payment");
         var payment = paymentService.pay(paymentMapper.mapToModel(paymentDTO));
-        log.info("payment created with success - paymentId: {}", payment.getId());
+        log.info("payment processed with successful - paymentId: {}", payment.getId());
         return ResponseEntity.status(HttpStatus.CREATED).body(paymentMapper.mapToDTO(payment));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<PaymentCreatedDTO> get(@PathVariable UUID id) {
+        log.info("receiving find payment");
+        var payment = paymentMapper.mapToDTO(paymentService.get(id));
+        log.info("payment found with successful - paymentId: {}", id);
+        return ResponseEntity.ok(payment);
     }
 }
