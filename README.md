@@ -53,6 +53,8 @@ $ ./gradlew clean test
 ```
 
 ### Consuming the API
+
+**Creating a payment**
 ```
 $ curl --location --request POST 'http://localhost:8080/api/v1/payments' \
 --header 'Content-Type: application/json' \
@@ -68,6 +70,10 @@ $ curl --location --request POST 'http://localhost:8080/api/v1/payments' \
         "cvc": 123
     }
 }'
+```
+**Getting a payment**
+```
+curl --location 'localhost:8080/api/v1/payments/30793a39-c068-4331-80d6-f1a9707e8b92'
 ```
 
 ## Contributing
