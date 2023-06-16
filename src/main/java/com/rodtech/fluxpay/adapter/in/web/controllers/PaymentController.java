@@ -4,6 +4,7 @@ import com.rodtech.fluxpay.application.dtos.PaymentCreatedDTO;
 import com.rodtech.fluxpay.application.dtos.PaymentDTO;
 import com.rodtech.fluxpay.application.mappers.PaymentMapper;
 import com.rodtech.fluxpay.domain.services.PaymentService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +26,7 @@ public class PaymentController {
         this.paymentMapper = paymentMapper;
     }
 
+    @Operation(summary = "Create a payment")
     @PostMapping
     public ResponseEntity<PaymentCreatedDTO> pay(@RequestBody @Validated PaymentDTO paymentDTO) {
         log.info("receiving payment");
@@ -33,6 +35,7 @@ public class PaymentController {
         return ResponseEntity.status(HttpStatus.CREATED).body(paymentMapper.mapToDTO(payment));
     }
 
+    @Operation(summary = "Get a payment by id")
     @GetMapping("/{id}")
     public ResponseEntity<PaymentCreatedDTO> get(@PathVariable UUID id) {
         log.info("receiving find payment");
