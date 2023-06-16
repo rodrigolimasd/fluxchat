@@ -14,3 +14,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/fluxpay
     username: fluxpay-usr
     password: postgres
+
+  springdoc:
+    api-docs:
+      path: /api-docs
