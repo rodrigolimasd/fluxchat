@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @Log4j2
 @RestController
 @RequestMapping("/api/v1/payments")
@@ -25,9 +27,17 @@ public class PaymentController {
 
     @PostMapping
     public ResponseEntity<PaymentCreatedDTO> pay(@RequestBody @Validated PaymentDTO paymentDTO) {
-        log.info("creating new payment");
+        log.info("receiving payment");
         var payment = paymentService.pay(paymentMapper.mapToModel(paymentDTO));
-        log.info("payment created with success - paymentId: {}", payment.getId());
+        log.info("payment processed with successful - paymentId: {}", payment.getId());
         return ResponseEntity.status(HttpStatus.CREATED).body(paymentMapper.mapToDTO(payment));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<PaymentCreatedDTO> get(@PathVariable UUID id) {
+        log.info("receiving find payment");
+        var payment = paymentMapper.mapToDTO(paymentService.get(id));
+        log.info("payment found with successful - paymentId: {}", id);
+        return ResponseEntity.ok(payment);
     }
 }
