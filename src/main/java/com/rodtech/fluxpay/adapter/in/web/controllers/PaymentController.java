@@ -8,9 +8,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Log4j2
 @RestController
@@ -25,6 +23,7 @@ public class PaymentController {
         this.paymentMapper = paymentMapper;
     }
 
+    @PostMapping
     public ResponseEntity<PaymentCreatedDTO> pay(@RequestBody @Validated PaymentDTO paymentDTO) {
         log.info("creating new payment");
         var payment = paymentService.pay(paymentMapper.mapToModel(paymentDTO));

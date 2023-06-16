@@ -18,7 +18,7 @@ import java.util.UUID;
 public class PaymentEntity {
     @Id
     @Type(type = "org.hibernate.type.UUIDCharType")
-    @Column(columnDefinition = "varchar(255)")
+    @Column(columnDefinition = "varchar")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     @Column(nullable = false)
