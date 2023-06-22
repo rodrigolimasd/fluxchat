@@ -2,6 +2,7 @@ package com.rodtech.fluxpay.application.dtos;
 
 import lombok.*;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Getter
@@ -9,7 +10,7 @@ import java.math.BigDecimal;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PaymentDTO {
+public class PaymentDTO implements Serializable {
     private BigDecimal amount;
     private String currency;
     private String description;

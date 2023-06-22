@@ -23,12 +23,14 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springdoc:springdoc-openapi-ui:1.7.0")
+	implementation("org.springframework.kafka:spring-kafka")
 	compileOnly("org.projectlombok:lombok")
 	runtimeOnly("org.postgresql:postgresql")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("com.h2database:h2")
+	testImplementation("org.springframework.kafka:spring-kafka-test")
 }
 
 tasks.withType<Test> {
