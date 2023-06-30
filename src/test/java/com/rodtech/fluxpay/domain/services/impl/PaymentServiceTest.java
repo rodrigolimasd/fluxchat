@@ -67,7 +67,12 @@ class PaymentServiceTest {
         var id = UUID.randomUUID();
         var mockPayment = getPayment();
         mockPayment.setId(id);
+
+        when(paymentDataGateway.getById(any())).thenReturn(mockPayment);
+
         var result = paymentService.get(id);
+
+        assertEquals(id, result.getId());
     }
 
     private Payment getPayment() {
