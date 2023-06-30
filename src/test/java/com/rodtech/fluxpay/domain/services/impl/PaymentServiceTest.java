@@ -75,6 +75,17 @@ class PaymentServiceTest {
         assertEquals(id, result.getId());
     }
 
+    @Test
+    void shouldUpdateStarusWithSuccessful() {
+        var id = UUID.randomUUID();
+        var mockPayment = getPayment();
+        mockPayment.setStatus(PaymentStatus.PENDING);
+        when(paymentDataGateway.getById(any())).thenReturn(mockPayment);
+        paymentService.updateStatus(PaymentStatus.SUCCESSFUL, id);
+
+        verify(paymentDataGateway, times(1)).updateStatus(any(), any());
+    }
+
     private Payment getPayment() {
         return Payment.builder()
                 .card(Card.builder().build())
