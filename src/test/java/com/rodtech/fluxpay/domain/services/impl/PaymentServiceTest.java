@@ -1,5 +1,6 @@
 package com.rodtech.fluxpay.domain.services.impl;
 
+import com.rodtech.fluxpay.domain.exceptions.PaymentValidationException;
 import com.rodtech.fluxpay.domain.gateways.payment.PaymentDataGateway;
 import com.rodtech.fluxpay.domain.gateways.payment.PaymentGateway;
 import com.rodtech.fluxpay.domain.models.payment.Card;
@@ -15,6 +16,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -84,6 +86,16 @@ class PaymentServiceTest {
         paymentService.updateStatus(PaymentStatus.SUCCESSFUL, id);
 
         verify(paymentDataGateway, times(1)).updateStatus(any(), any());
+    }
+
+    @Test
+    void shouldThrowsExceptionWhenStatusInvalid() {
+        var id = UUID.randomUUID();
+        var mockPayment = getPayment();
+        mockPayment.setStatus(PaymentStatus.PENDING);
+        when(paymentDataGateway.getById(any())).thenReturn(mockPayment);
+
+        assertThrows(PaymentValidationException.class, () -> paymentService.updateStatus(PaymentStatus.PENDING, id));
     }
 
     private Payment getPayment() {
