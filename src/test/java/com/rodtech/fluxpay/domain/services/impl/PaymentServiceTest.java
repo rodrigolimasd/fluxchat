@@ -98,6 +98,16 @@ class PaymentServiceTest {
         assertThrows(PaymentValidationException.class, () -> paymentService.updateStatus(PaymentStatus.PENDING, id));
     }
 
+    @Test
+    void shouldThrowsExceptionWhenStatusNotCanUpdate() {
+        var id = UUID.randomUUID();
+        var mockPayment = getPayment();
+        mockPayment.setStatus(PaymentStatus.SUCCESSFUL);
+        when(paymentDataGateway.getById(any())).thenReturn(mockPayment);
+
+        assertThrows(PaymentValidationException.class, () -> paymentService.updateStatus(PaymentStatus.FAILED, id));
+    }
+
     private Payment getPayment() {
         return Payment.builder()
                 .card(Card.builder().build())
