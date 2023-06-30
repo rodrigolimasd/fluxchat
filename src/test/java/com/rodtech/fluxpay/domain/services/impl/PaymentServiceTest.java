@@ -62,6 +62,14 @@ class PaymentServiceTest {
         verify(paymentGateway, times(1)).pay(any());
     }
 
+    @Test
+    void shouldGetAPaymentById() {
+        var id = UUID.randomUUID();
+        var mockPayment = getPayment();
+        mockPayment.setId(id);
+        var result = paymentService.get(id);
+    }
+
     private Payment getPayment() {
         return Payment.builder()
                 .card(Card.builder().build())
