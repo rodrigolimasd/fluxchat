@@ -46,6 +46,22 @@ class PaymentServiceTest {
         verify(paymentGateway, times(1)).pay(any());
     }
 
+    @Test
+    void shouldProcessPaymentWithFailed() {
+        var payment = getPayment();
+
+        when(paymentGateway.getToken(any())).thenReturn(UUID.randomUUID().toString());
+        when(paymentDataGateway.save(any())).thenReturn(payment);
+        when(paymentGateway.pay(any())).thenReturn(false);
+
+        var result = paymentService.pay(payment);
+
+        assertEquals(PaymentStatus.FAILED, result.getStatus());
+        verify(paymentGateway, times(1)).getToken(any());
+        verify(paymentDataGateway, times(2)).save(any());
+        verify(paymentGateway, times(1)).pay(any());
+    }
+
     private Payment getPayment() {
         return Payment.builder()
                 .card(Card.builder().build())
