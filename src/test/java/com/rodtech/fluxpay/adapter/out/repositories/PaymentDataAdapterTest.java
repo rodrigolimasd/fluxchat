@@ -49,4 +49,20 @@ class PaymentDataAdapterTest {
 
         verify(paymentRepository, times(1)).save(any());
     }
+
+
+
+    @Test
+    void shouldUpdatePaymentStatus() {
+        var entityMock = PaymentEntity.builder()
+                .id(UUID.randomUUID())
+                .build();
+        when(paymentRepository.findById(any())).thenReturn(Optional.of(entityMock));
+
+        paymentDataAdapter.updateStatus(PaymentStatus.SUCCESSFUL, UUID.randomUUID());
+
+        verify(paymentRepository, times(1)).findById(any());
+        verify(paymentRepository, times(1)).save(any());
+
+    }
 }
