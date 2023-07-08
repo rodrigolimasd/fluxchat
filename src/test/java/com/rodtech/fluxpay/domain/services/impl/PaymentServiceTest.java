@@ -6,7 +6,6 @@ import com.rodtech.fluxpay.domain.gateways.payment.PaymentGateway;
 import com.rodtech.fluxpay.domain.models.payment.Card;
 import com.rodtech.fluxpay.domain.models.payment.Payment;
 import com.rodtech.fluxpay.domain.models.payment.enums.PaymentStatus;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
