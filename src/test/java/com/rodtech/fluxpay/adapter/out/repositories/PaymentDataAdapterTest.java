@@ -65,4 +65,27 @@ class PaymentDataAdapterTest {
         verify(paymentRepository, times(1)).save(any());
 
     }
+
+    @Test
+    void shouldGetByIdByPayment() {
+        var entityMock = PaymentEntity.builder()
+                .id(UUID.randomUUID())
+                .amount(BigDecimal.ONE)
+                .currency("BRL")
+                .description("teste")
+                .status(PaymentStatus.PENDING)
+                .build();
+
+        when(paymentRepository.findById(any())).thenReturn(Optional.of(entityMock));
+
+        var result = paymentDataAdapter.getById(entityMock.getId());
+
+        assertEquals(entityMock.getId(), result.getId());
+        assertEquals(entityMock.getCurrency(), result.getCurrency());
+        assertEquals(entityMock.getDescription(), result.getDescription());
+        assertEquals(entityMock.getStatus(), result.getStatus());
+
+        verify(paymentRepository, times(1)).findById(any());
+
+    }
 }
