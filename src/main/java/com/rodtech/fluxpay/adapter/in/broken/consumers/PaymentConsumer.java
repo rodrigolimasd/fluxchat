@@ -1,6 +1,7 @@
 package com.rodtech.fluxpay.adapter.in.broken.consumers;
 
 import com.rodtech.fluxpay.application.dtos.PaymentStatusDTO;
+import com.rodtech.fluxpay.application.util.JsonUtil;
 import com.rodtech.fluxpay.domain.services.PaymentService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.context.annotation.Profile;
@@ -31,7 +32,8 @@ public class PaymentConsumer {
                             @PartitionOffset(partition = "*", initialOffset = "0")}
             )
     )
-    public void paymentConsumer(@Payload PaymentStatusDTO payment, @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition) {
+    public void paymentConsumer(@Payload String payload, @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition) {
+        var payment = JsonUtil.fromJson(payload, PaymentStatusDTO.class);
         log.info("Consuming message from partition {} paymentId {} ", partition, payment.getId());
         paymentService.updateStatus(payment.getPaymentStatus(), payment.getId());
         log.info("Message consumed from partition {} paymentId {} ", partition, payment.getId());
