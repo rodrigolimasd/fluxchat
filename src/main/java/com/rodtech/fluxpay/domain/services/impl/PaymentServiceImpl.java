@@ -27,9 +27,9 @@ public class PaymentServiceImpl implements PaymentService {
         payment.setStatus(PaymentStatus.PENDING);
         payment = paymentDataGateway.save(payment);
 
-        var isPaySuccessful = paymentGateway.pay(payment);
+        var processing = paymentGateway.pay(payment);
 
-        var status = isPaySuccessful ? PaymentStatus.SUCCESSFUL : PaymentStatus.FAILED;
+        var status = processing ? PaymentStatus.PROCESSING : PaymentStatus.FAILED;
 
         payment.setStatus(status);
         payment = paymentDataGateway.save(payment);
@@ -52,7 +52,7 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     private void validateStatus(Payment payment, PaymentStatus status) {
-        if(payment.getStatus()!=PaymentStatus.PENDING) {
+        if(payment.getStatus()!=PaymentStatus.PROCESSING) {
             throw new PaymentValidationException("Invalid update status - paymentId: "+payment.getId());
         }
         if(status==PaymentStatus.PENDING) {

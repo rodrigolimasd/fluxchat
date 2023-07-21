@@ -41,7 +41,7 @@ class PaymentServiceTest {
 
         var result = paymentService.pay(payment);
 
-        assertEquals(PaymentStatus.SUCCESSFUL, result.getStatus());
+        assertEquals(PaymentStatus.PROCESSING, result.getStatus());
         verify(paymentGateway, times(1)).getToken(any());
         verify(paymentDataGateway, times(2)).save(any());
         verify(paymentGateway, times(1)).pay(any());
@@ -80,7 +80,7 @@ class PaymentServiceTest {
     void shouldUpdateStarusWithSuccessful() {
         var id = UUID.randomUUID();
         var mockPayment = getPayment();
-        mockPayment.setStatus(PaymentStatus.PENDING);
+        mockPayment.setStatus(PaymentStatus.PROCESSING);
         when(paymentDataGateway.getById(any())).thenReturn(mockPayment);
         paymentService.updateStatus(PaymentStatus.SUCCESSFUL, id);
 

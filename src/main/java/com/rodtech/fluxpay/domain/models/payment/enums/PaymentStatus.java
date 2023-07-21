@@ -2,6 +2,7 @@ package com.rodtech.fluxpay.domain.models.payment.enums;
 
 public enum PaymentStatus {
     PENDING("Pending"),
+    PROCESSING("processing"),
     SUCCESSFUL("Successful"),
     FAILED("Failed");
 
