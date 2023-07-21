@@ -80,7 +80,7 @@ class PaymentServiceTest {
     void shouldUpdateStarusWithSuccessful() {
         var id = UUID.randomUUID();
         var mockPayment = getPayment();
-        mockPayment.setStatus(PaymentStatus.PENDING);
+        mockPayment.setStatus(PaymentStatus.PROCESSING);
         when(paymentDataGateway.getById(any())).thenReturn(mockPayment);
         paymentService.updateStatus(PaymentStatus.SUCCESSFUL, id);
 
