@@ -7,11 +7,6 @@ import com.rodtech.fluxpay.domain.services.PaymentService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.context.annotation.Profile;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.kafka.annotation.PartitionOffset;
-import org.springframework.kafka.annotation.TopicPartition;
-import org.springframework.kafka.support.KafkaHeaders;
-import org.springframework.messaging.handler.annotation.Header;
-import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 @Profile("!test")
