@@ -40,7 +40,7 @@ public class PaymentDataAdapter implements PaymentDataGateway {
     public void updateStatus(PaymentStatus paymentStatus, UUID id) {
         log.info("updating payment status - paymentId: {} - status: {}", id, paymentStatus.name());
         var paymentEntity = paymentRepository.findById(id)
-                .orElseThrow(()-> new PaymentNotFoundException("payment not found - paymentId: "+id));
+                .orElseThrow(() -> new PaymentNotFoundException("payment not found - paymentId: " + id));
 
         paymentEntity.setStatus(paymentStatus);
         paymentRepository.save(paymentEntity);
@@ -51,13 +51,13 @@ public class PaymentDataAdapter implements PaymentDataGateway {
     public Payment getById(UUID id) {
         log.info("finding payment - paymentId: {}", id);
         return paymentRepository.findById(id)
-                .map(p-> Payment.builder()
-                .id(p.getId())
-                .amount(p.getAmount())
-                .currency(p.getCurrency())
-                .description(p.getDescription())
-                .status(p.getStatus())
-                .build())
-                .orElseThrow(()-> new PaymentNotFoundException("Payment not found - paymentId: "+id));
+                .map(p -> Payment.builder()
+                        .id(p.getId())
+                        .amount(p.getAmount())
+                        .currency(p.getCurrency())
+                        .description(p.getDescription())
+                        .status(p.getStatus())
+                        .build())
+                .orElseThrow(() -> new PaymentNotFoundException("Payment not found - paymentId: " + id));
     }
 }

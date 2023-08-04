@@ -11,10 +11,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.UUID;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-
 @ExtendWith(MockitoExtension.class)
 class PaymentConsumerTest {
 
@@ -33,7 +29,7 @@ class PaymentConsumerTest {
 
         //paymentConsumer.paymentConsumer(paymentDto, 1);
 
-       // verify(paymentService, times(1)).updateStatus(any(), any());
+        // verify(paymentService, times(1)).updateStatus(any(), any());
 
     }
 }
