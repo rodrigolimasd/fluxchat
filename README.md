@@ -1,6 +1,6 @@
 # Fluxpay [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/rodrigolimasd/fluxpay/blob/master/LICENSE)
-This API for making credit card payments through a gateway.
-Stripe is used as payment gateway
+
+This API for making credit card payments through a gateway. Stripe is used as payment gateway
 
 It is a REST API built with JAVA 11 + Spring Boot + PostgreSQL + Flyway + OpenFeing + SQS + Docker + ECS + Terraform.
 
@@ -25,15 +25,18 @@ To use the database, you will need to have PostgreSQL installed and running on y
 ### Installing
 
 **Cloning the Repository**
+
 ````
 $ git clone https://github.com/rodrigolimasd/fluxpay.git
 $ cd fluxpay
 ````
+
 ### Running the Development environment
 
 **Running with Gradle**
 
 **Start database**
+
 ```
 docker-compose up -d
 ```
@@ -55,6 +58,7 @@ $ ./gradlew clean test
 ### Consuming the API
 
 **Creating a payment**
+
 ```
 $ curl --location --request POST 'http://localhost:8080/api/v1/payments' \
 --header 'Content-Type: application/json' \
@@ -71,7 +75,9 @@ $ curl --location --request POST 'http://localhost:8080/api/v1/payments' \
     }
 }'
 ```
+
 **Getting a payment**
+
 ```
 curl --location 'localhost:8080/api/v1/payments/30793a39-c068-4331-80d6-f1a9707e8b92'
 ```

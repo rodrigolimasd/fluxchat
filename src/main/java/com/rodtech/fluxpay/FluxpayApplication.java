@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class FluxpayApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(FluxpayApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(FluxpayApplication.class, args);
+    }
 
 }

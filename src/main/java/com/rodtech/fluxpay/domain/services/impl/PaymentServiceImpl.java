@@ -52,11 +52,11 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     private void validateStatus(Payment payment, PaymentStatus status) {
-        if(payment.getStatus()!=PaymentStatus.PROCESSING) {
-            throw new PaymentValidationException("Invalid update status - paymentId: "+payment.getId());
+        if (payment.getStatus() != PaymentStatus.PROCESSING) {
+            throw new PaymentValidationException("Invalid update status - paymentId: " + payment.getId());
         }
-        if(status==PaymentStatus.PENDING) {
-            throw new PaymentValidationException("Invalid status - status: "+ status);
+        if (status == PaymentStatus.PENDING) {
+            throw new PaymentValidationException("Invalid status - status: " + status);
         }
     }
 }

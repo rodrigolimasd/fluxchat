@@ -7,6 +7,8 @@ import java.util.UUID;
 
 public interface PaymentService {
     Payment pay(Payment payment);
+
     Payment get(UUID id);
+
     void updateStatus(PaymentStatus status, UUID id);
 }

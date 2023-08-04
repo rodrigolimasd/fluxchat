@@ -1,7 +1,6 @@
 package com.rodtech.fluxpay.adapter.out.repositories;
 
 import com.rodtech.fluxpay.adapter.out.repositories.entities.PaymentEntity;
-import com.rodtech.fluxpay.application.dtos.PaymentStatusDTO;
 import com.rodtech.fluxpay.domain.models.payment.Payment;
 import com.rodtech.fluxpay.domain.models.payment.enums.PaymentStatus;
 import org.junit.jupiter.api.Test;
@@ -14,7 +13,8 @@ import java.math.BigDecimal;
 import java.util.Optional;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -49,7 +49,6 @@ class PaymentDataAdapterTest {
 
         verify(paymentRepository, times(1)).save(any());
     }
-
 
 
     @Test

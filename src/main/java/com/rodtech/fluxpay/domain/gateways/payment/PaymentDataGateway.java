@@ -7,6 +7,8 @@ import java.util.UUID;
 
 public interface PaymentDataGateway {
     Payment save(Payment payment);
+
     void updateStatus(PaymentStatus paymentStatus, UUID id);
+
     Payment getById(UUID id);
 }
